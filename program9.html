@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .slider{
+            text-align: center;
+            height:  400px;
+            width: 60%;
+            margin: auto;
+            position: relative;
+        }
+        .slider img{
+            height: 400px;
+            width: 400px;
+            object-fit: cover;
+        }
+        button{
+            padding: 5px;
+            border: 20px;
+            background-color: cadetblue;
+            border-radius: 20px;
+            border-color: black;
+        }
+    </style>
+</head>
+<body>
+    <div class="slider">
+            <img src="./image1.jfif" alt="" id="displayImg">
+            <button id="next">next</button>
+            <button id="previous">previous</button>
+
+
+    </div>
+    <script>
+        let Images=["image1.jfif","image2.jfif","image3.jfif","image4.jfif"]
+        let currentIndex =0;
+
+
+
+        let display=document.getElementById("displayImg");
+        let prevBTn=document.getElementById("previous");
+        let nextBTn=document.getElementById("next");
+
+        nextBTn.addEventListener("click",()=>{
+            currentIndex=(currentIndex +1) % Images.length;
+            display.src=Images[currentIndex];
+        })
+            prevBTn.addEventListener("click",()=>{
+            currentIndex=(currentIndex - 1 + Images.length)%Images.length;
+            display.src=Images[currentIndex]; 
+        })
+
+        setInterval(()=>{
+            currentIndex=(currentIndex +1) % Images.length;
+            display.src=Images[currentIndex];
+        },2000);
+    </script>
+</body>
+</html>
